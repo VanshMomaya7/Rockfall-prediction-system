@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: transparent no-repeat center / 12px 12px;
+  border: none;
+  cursor: default;
+}
+
+/* Hide extra arrow buttons (only keep main up/down) */
+::-webkit-scrollbar-button:vertical:start:increment,
+::-webkit-scrollbar-button:vertical:end:decrement,
+::-webkit-scrollbar-button:horizontal:start:increment,
+::-webkit-scrollbar-button:horizontal:end:decrement {
+  display: none;
+}
+
+/* Arrows (up/down with embedded SVG) */
+::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ccc' viewBox='0 0 179.174 179.173'%3E%3Cpath d='M138.592,123.612c17.037,0,23.98-11.982,15.504-26.761l-49.188-85.768c-8.477-14.778-22.208-14.778-30.677,0L25.036,96.851 c-8.474,14.778-1.533,26.761,15.503,26.761H138.592z'/%3E%3C/svg%3E");
+}
+::-webkit-scrollbar-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ccc' viewBox='0 0 179.174 179.173'%3E%3Cpath d='M40.582,55.561c-17.037,0-23.978,11.982-15.503,26.76l49.189,85.769c8.468,14.778,22.199,14.778,30.677,0l49.189-85.769c8.475-14.778,1.532-26.76-15.504-26.76H40.582z'/%3E%3C/svg%3E");
+}
+
+/* Light and dark scrollbar styles (class-based theme) */
+:root,
+:root.dark {
+  --track-bg: transparent;
+  --thumb-bg: #888;
+  --thumb-hover-bg: #555;
+  --thumb-border: #f3f4f6;
+}
+:root.dark {
+  --thumb-bg: #555;
+  --thumb-hover-bg: #888;
+  --thumb-border: #2a2a2a;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--track-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--thumb-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--thumb-hover-bg);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #3b82f6; /* Tailwind blue-500 */
+  border: 2px solid #1e40af; /* Tailwind blue-900 */
+  cursor: pointer;
+  border-radius: 0; /* square thumb */
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #3b82f6;
+  border: 2px solid #1e40af;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+
+/* Custom checkboxes */
+  input[type="checkbox"].custom-check:checked::after {
+    content: "✔";
+    position: absolute;
+    top: -2px;
+    left: 1px;
+    font-size: 12px;
+    color: white;
+  }
+
+  /* Custom radios */
+  input[type="radio"].custom-radio:checked::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 8px;
+    height: 8px;
+    background: white;
+  }
