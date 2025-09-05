@@ -12,8 +12,6 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import {
-  LineChart,
-  Line,
   AreaChart,
   Area,
   ResponsiveContainer,
@@ -69,23 +67,6 @@ const SENSOR_COLORS = {
   online: "#10B981",
   offline: "#6B7280",
   warning: "#F59E0B",
-};
-
-const SENSOR_ICON = (type: SensorData["type"]) => {
-  switch (type) {
-    case "pressure":
-      return "💧";
-    case "vibration":
-      return "🛰️";
-    case "temperature":
-      return "🌡️";
-    case "humidity":
-      return "💦";
-    case "gas":
-      return "🧪";
-    default:
-      return "📟";
-  }
 };
 
 function riskToBand(value: number): ZoneData["risk"] {
@@ -938,7 +919,9 @@ export default function RiskMap(): JSX.Element {
         {selectedZone ? (
           <div className="h-full flex flex-col">
             <div className="flex items-center justify-between px-3 py-2 border-b border-gray-700">
-              <div className="font-bold text-white mt-2">Zone {selectedZone.id}</div>
+              <div className="font-bold text-white mt-2">
+                Zone {selectedZone.id}
+              </div>
               <button
                 className="text-gray-300 hover:text-white"
                 onClick={() => setSelectedZoneId(null)}
@@ -1050,47 +1033,51 @@ export default function RiskMap(): JSX.Element {
                 </div>
               </div> */}
 
-<div className="bg-gray-900 border border-gray-700 p-2">
-  <div className="text-sm mb-2">Sensor mix</div>
-  <div className="h-36 w-85"> {/* ✅ Increased height (was h-24) */}
-    <ResponsiveContainer width="100%" height="100%">
-      <BarChart
-        data={Object.entries(
-          selectedZone.sensors.reduce<Record<string, number>>(
-            (acc, s) => {
-              acc[s.type] = (acc[s.type] || 0) + 1;
-              return acc;
-            },
-            {}
-          )
-        ).map(([k, v]) => ({ type: k, count: v }))}
-        margin={{ top: 10, left: 10, right: 10, bottom: 10 }} // ✅ more padding
-      >
-        <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
-        
-        <XAxis
-          dataKey="type"
-          interval="preserveStartEnd"
-          tick={{ fill: "#9ca3af", fontSize: 12 }}
-        />
-        
-        <YAxis allowDecimals={false} />
-        
-        <RechartsTooltip
-          contentStyle={{
-            background: "#111827",
-            border: "1px solid #374151",
-          }}
-        />
-        
-        <Bar dataKey="count" fill={selectedZone.riskColor} barSize={30} /> 
-        {/* ✅ wider bars */}
-      </BarChart>
-    </ResponsiveContainer>
-  </div>
-</div>
+              <div className="bg-gray-900 border border-gray-700 p-2">
+                <div className="text-sm mb-2">Sensor mix</div>
+                <div className="h-36 w-85">
+                  {" "}
+                  {/* ✅ Increased height (was h-24) */}
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={Object.entries(
+                        selectedZone.sensors.reduce<Record<string, number>>(
+                          (acc, s) => {
+                            acc[s.type] = (acc[s.type] || 0) + 1;
+                            return acc;
+                          },
+                          {}
+                        )
+                      ).map(([k, v]) => ({ type: k, count: v }))}
+                      margin={{ top: 10, left: 10, right: 10, bottom: 10 }} // ✅ more padding
+                    >
+                      <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
 
+                      <XAxis
+                        dataKey="type"
+                        interval="preserveStartEnd"
+                        tick={{ fill: "#9ca3af", fontSize: 12 }}
+                      />
 
+                      <YAxis allowDecimals={false} />
+
+                      <RechartsTooltip
+                        contentStyle={{
+                          background: "#111827",
+                          border: "1px solid #374151",
+                        }}
+                      />
+
+                      <Bar
+                        dataKey="count"
+                        fill={selectedZone.riskColor}
+                        barSize={30}
+                      />
+                      {/* ✅ wider bars */}
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
             </div>
           </div>
         ) : selectedSensor ? (

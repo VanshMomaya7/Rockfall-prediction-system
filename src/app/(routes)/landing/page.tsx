@@ -161,11 +161,9 @@
 
 // export default Landing;
 
-
 // src/app/(routes)/landing/page.tsx
 "use client";
 
-import Link from "next/link";
 import { NextPage } from "next";
 
 const Landing: NextPage = () => {
@@ -189,8 +187,8 @@ const Landing: NextPage = () => {
             Rockfalls in open-pit mines pose a serious threat to workers and
             equipment, leading to injuries, delays, and financial loss. This
             system leverages AI, predictive analytics, and multi-source data to
-            transform slope stability assessments into proactive,
-            life-saving insights.
+            transform slope stability assessments into proactive, life-saving
+            insights.
           </p>
           <button
             onClick={scrollToFeatures}
@@ -276,10 +274,14 @@ const Landing: NextPage = () => {
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             <div className="bg-gray-800 p-6 rounded-lg">
               <h4 className="text-2xl font-bold text-blue-400 mb-2">Safety</h4>
-              <p className="text-gray-300">Reduces risks to miners & equipment</p>
+              <p className="text-gray-300">
+                Reduces risks to miners & equipment
+              </p>
             </div>
             <div className="bg-gray-800 p-6 rounded-lg">
-              <h4 className="text-2xl font-bold text-green-400 mb-2">Scalable</h4>
+              <h4 className="text-2xl font-bold text-green-400 mb-2">
+                Scalable
+              </h4>
               <p className="text-gray-300">
                 Adaptable for small & large mining operations
               </p>
@@ -310,4 +312,3 @@ const Landing: NextPage = () => {
 };
 
 export default Landing;
-

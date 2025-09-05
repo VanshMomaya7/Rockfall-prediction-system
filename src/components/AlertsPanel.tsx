@@ -62,7 +62,6 @@
 // const nowDisplay = () => new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 // const isoNow = () => new Date().toISOString();
 
-
 // const severityRank = (s: Severity) => (s === "Critical" ? 4 : s === "High" ? 3 : s === "Medium" ? 2 : 1);
 
 // const riskToBand = (v: number): ZoneRisk => (v <= 30 ? "Low" : v <= 60 ? "Medium" : v <= 90 ? "High" : "Critical");
@@ -347,7 +346,7 @@
 //             Highlighting <span className="font-semibold">{highlightedZone}</span> — (demo highlight)
 //           </div>
 //         ) : (
-//           // <div className="text-sm text-gray-400">Click "📍 Highlight" to preview zone</div> 
+//           // <div className="text-sm text-gray-400">Click "📍 Highlight" to preview zone</div>
 //           null
 //         )}
 //       </div>
@@ -418,9 +417,8 @@
 //       </div>
 //     </div>
 //   );
-  
-// }
 
+// }
 
 //  <div className="h-full flex flex-col bg-[#1E1E2F] border-r border-[#3A3A55]">
 //   {/* Header */}
@@ -557,7 +555,6 @@
 //   </div>
 // </div>
 
-
 // AlertsPanelLite.tsx
 "use client";
 
@@ -631,7 +628,6 @@
 //     return prev.filter((a) => a.id !== id);
 //   });
 // };
-
 
 //   return (
 //     <div className="h-full flex flex-col bg-gray-900 border-r border-gray-700">
@@ -709,18 +705,13 @@
 //   );
 // }
 
-
-
-
 // AlertsPanelLite.tsx
 "use client";
 
 import React, { JSX, useState } from "react";
 
-type Severity = "Low" | "Medium" | "High" | "Critical";
-
 interface ZoneAlert {
-  id: string;              // zoneId
+  id: string; // zoneId
   coordinateId: string;
   risk: string;
   riskLevel: number;
@@ -728,13 +719,6 @@ interface ZoneAlert {
   status: string;
   lastUpdated: string;
 }
-
-const riskColors: Record<string, string> = {
-  Low: "#34D399",      // mint green
-  Medium: "#FCD34D",   // soft amber
-  High: "#FB923C",     // warm orange
-  Critical: "#7C3AED", // deep indigo/purple
-};
 
 const badgeClass = (s: string) => {
   switch (s.toLowerCase()) {
@@ -758,9 +742,8 @@ interface AlertsPanelLiteProps {
 export default function AlertsPanelLite({
   onHighlight,
 }: AlertsPanelLiteProps): JSX.Element {
-
   const data = [
-     {
+    {
       id: "ZONE_02_04",
       coordinateId: "23.758400, 86.405925",
       risk: "Low",
@@ -904,7 +887,7 @@ export default function AlertsPanelLite({
       status: "Monitoring",
       lastUpdated: "5m ago",
     },
-  ]
+  ];
 
   const [alerts, setAlerts] = useState<ZoneAlert[]>(data);
   const [history, setHistory] = useState<ZoneAlert[]>([]);
@@ -922,8 +905,6 @@ export default function AlertsPanelLite({
       return prev.filter((a) => a.id !== id);
     });
   };
-
-  
 
   return (
     <div className="h-full flex flex-col bg-gray-900 border-r border-gray-700">
@@ -954,9 +935,7 @@ export default function AlertsPanelLite({
                 </span>
               </div>
 
-              <div className="mt-2 text-sm text-white font-medium">
-                {a.id}
-              </div>
+              <div className="mt-2 text-sm text-white font-medium">{a.id}</div>
               <div className="text-xs text-gray-400">
                 {a.status} • {a.coordinateId}
               </div>

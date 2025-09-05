@@ -1,11 +1,13 @@
-import SafetyChart from "@/components/Barchart";
-import MineMap from "@/components/MineMap";
-import RiskMap from "@/components/RiskMap";
-import Image from "next/image";
+"use client"; // optional if you want this page entirely client-side
+
+import dynamic from "next/dynamic";
+
+// Dynamically import RiskMap with SSR disabled
+const RiskMap = dynamic(() => import("@/components/RiskMap"), { ssr: false });
 
 export default function Map() {
   return (
-    <div>
+    <div style={{ width: "100%", height: "100vh" }}>
       <RiskMap />
     </div>
   );

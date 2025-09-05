@@ -179,7 +179,6 @@
 //   );
 // }
 
-
 "use client";
 
 import { useState, useMemo } from "react";
@@ -227,7 +226,10 @@ export default function ForecastChart() {
   // Forecast datasets
   const windData = useMemo(() => generateData("wind"), []);
   const rainData = useMemo(() => generateData("rain"), []);
-  const allData = useMemo(() => mergeData(windData, rainData), [windData, rainData]);
+  const allData = useMemo(
+    () => mergeData(windData, rainData),
+    [windData, rainData]
+  );
 
   // Get proper dataset for current view
   const getData = () => {
@@ -279,21 +281,33 @@ export default function ForecastChart() {
                 background: "#111827",
                 border: "1px solid #374151",
               }}
-              formatter={(value: any, name: any) => {
+              formatter={(value: number | string, name: string) => {
                 if (name === "wind") return [`${value} km/h`, "Wind"];
                 if (name === "rain") return [`${value} mm`, "Rainfall"];
-                return value;
+                return [value.toString(), name];
               }}
             />
 
             {/* Wind only */}
             {view === "wind" && (
-              <Line type="linear" dataKey="wind" stroke="#3A86FF" strokeWidth={2} dot={false} />
+              <Line
+                type="linear"
+                dataKey="wind"
+                stroke="#3A86FF"
+                strokeWidth={2}
+                dot={false}
+              />
             )}
 
             {/* Rain only */}
             {view === "rain" && (
-              <Line type="linear" dataKey="rain" stroke="#14b8a6" strokeWidth={2} dot={false} />
+              <Line
+                type="linear"
+                dataKey="rain"
+                stroke="#14b8a6"
+                strokeWidth={2}
+                dot={false}
+              />
             )}
 
             {/* Both together */}
@@ -328,4 +342,3 @@ export default function ForecastChart() {
     </div>
   );
 }
-

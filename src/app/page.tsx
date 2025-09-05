@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { NextPage } from "next";
 
 const Landing: NextPage = () => {
