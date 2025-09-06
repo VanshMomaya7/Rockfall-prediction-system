@@ -1,13 +1,7 @@
 "use client";
 
 import React, { JSX, useEffect, useMemo, useState } from "react";
-import {
-  MapContainer,
-  ImageOverlay,
-  Rectangle,
-  Tooltip,
-  CircleMarker,
-} from "react-leaflet";
+import { MapContainer, ImageOverlay, Rectangle, Tooltip } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { LeafletMouseEvent } from "leaflet";
 
@@ -330,57 +324,6 @@ export default function MineZoneMap({
   ));
 
   // Generate sensor markers
-  const sensorMarkers = Object.values(dataset).flatMap((zone) =>
-    zone.sensors.map((sensor) => {
-      const sensorColors = {
-        online: "#10B981",
-        offline: "#6B7280",
-        warning: "#F59E0B",
-      };
-
-      return (
-        <CircleMarker
-          key={sensor.id}
-          center={[sensor.coordinates.lat, sensor.coordinates.lng]}
-          radius={4}
-          pathOptions={{
-            color: sensorColors[sensor.status],
-            fillColor: sensorColors[sensor.status],
-            fillOpacity: 0.8,
-            weight: 2,
-          }}
-          eventHandlers={{
-            click: (e: LeafletMouseEvent) => {
-              e.originalEvent.stopPropagation();
-              setSelectedSensor(sensor.id);
-              setSelectedZone(null);
-            },
-          }}
-        >
-          <Tooltip
-            sticky
-            className="sensor-tooltip"
-            direction="top"
-            offset={[0, -10]}
-          >
-            <div className="bg-gray-800 text-white p-2 text-sm border border-gray-500">
-              <div className="font-semibold capitalize">
-                {sensor.type} Sensor
-              </div>
-              <div className="text-lg font-bold">
-                {sensor.value}
-                {sensor.unit}
-              </div>
-              <div className="text-gray-300 capitalize">{sensor.status}</div>
-              <div className="text-xs text-gray-400 mt-1">
-                {sensor.lastUpdate}
-              </div>
-            </div>
-          </Tooltip>
-        </CircleMarker>
-      );
-    })
-  );
 
   const selectedZoneData = selectedZone ? dataset[selectedZone] : null;
   const selectedSensorData = selectedSensor

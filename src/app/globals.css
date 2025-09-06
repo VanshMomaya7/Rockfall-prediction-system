@@ -50,10 +50,10 @@ body {
 
 /* Arrows (up/down with embedded SVG) */
 ::-webkit-scrollbar-button:vertical:decrement {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ccc' viewBox='0 0 179.174 179.173'%3E%3Cpath d='M138.592,123.612c17.037,0,23.98-11.982,15.504-26.761l-49.188-85.768c-8.477-14.778-22.208-14.778-30.677,0L25.036,96.851 c-8.474,14.778-1.533,26.761,15.503,26.761H138.592z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' fill='%23ccc' viewBox='0 0 179.174 179.173'%3E%3Cpath d='M138.592,123.612c17.037,0,23.98-11.982,15.504-26.761l-49.188-85.768c-8.477-14.778-22.208-14.778-30.677,0L25.036,96.851 c-8.474,14.778-1.533,26.761,15.503,26.761H138.592z'/%3E%3C/svg%3E");
 }
 ::-webkit-scrollbar-button:vertical:increment {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ccc' viewBox='0 0 179.174 179.173'%3E%3Cpath d='M40.582,55.561c-17.037,0-23.978,11.982-15.503,26.76l49.189,85.769c8.468,14.778,22.199,14.778,30.677,0l49.189-85.769c8.475-14.778,1.532-26.76-15.504-26.76H40.582z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' fill='%23ccc' viewBox='0 0 179.174 179.173'%3E%3Cpath d='M40.582,55.561c-17.037,0-23.978,11.982-15.503,26.76l49.189,85.769c8.468,14.778,22.199,14.778,30.677,0l49.189-85.769c8.475-14.778,1.532-26.76-15.504-26.76H40.582z'/%3E%3C/svg%3E");
 }
 
 /* Light and dark scrollbar styles (class-based theme) */
@@ -99,24 +99,23 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 0;
 }
 
-
 /* Custom checkboxes */
-  input[type="checkbox"].custom-check:checked::after {
-    content: "✔";
-    position: absolute;
-    top: -2px;
-    left: 1px;
-    font-size: 12px;
-    color: white;
-  }
+input[type="checkbox"].custom-check:checked::after {
+  content: "✔";
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  font-size: 12px;
+  color: white;
+}
 
-  /* Custom radios */
-  input[type="radio"].custom-radio:checked::after {
-    content: "";
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 8px;
-    height: 8px;
-    background: white;
-  }
+/* Custom radios */
+input[type="radio"].custom-radio:checked::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  background: white;
+}

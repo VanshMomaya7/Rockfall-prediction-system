@@ -92,15 +92,15 @@ export default function RiskMap(): JSX.Element {
   const [selectedZoneId, setSelectedZoneId] = useState<string | null>(null);
   const [selectedSensorId, setSelectedSensorId] = useState<string | null>(null);
   const [panelOpen, setPanelOpen] = useState(true);
-  const [showHeatmap, setShowHeatmap] = useState(true);
-  const [showZones, setShowZones] = useState(false);
-  const [showSensors, setShowSensors] = useState(false);
-  const [showGrid, setShowGrid] = useState(false);
-  const [activeBase, setActiveBase] = useState<"drone" | "dem">("drone");
+  const [showHeatmap] = useState(true);
+  const [showZones] = useState(false);
+  const [showSensors] = useState(false);
+  const [showGrid] = useState(false);
+  const [activeBase] = useState<"drone" | "dem">("drone");
 
   // Filters
   const [riskThreshold, setRiskThreshold] = useState(10); // min %
-  const [sensorFilter, setSensorFilter] = useState<Array<SensorData["type"]>>([
+  const [sensorFilter] = useState<Array<SensorData["type"]>>([
     "temperature",
     "humidity",
     "gas",

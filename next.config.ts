@@ -1,7 +1,12 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+// next.config.js
+module.exports = {
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        destination: "https://rockfall-prediction-system.vercel.app/",
+        permanent: true,
+      },
+    ];
+  },
 };
-
-export default nextConfig;
