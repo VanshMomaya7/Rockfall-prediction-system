@@ -3,8 +3,8 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: "/:path*",
-        destination: "https://rockfall-prediction-system.vercel.app/",
+        source: "/",
+        destination: "/landing",
         permanent: true,
       },
     ];
